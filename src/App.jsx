@@ -5,6 +5,8 @@ import { DrinkButtons } from './components/DrinkButtons'; //this is different Dr
 //import the dataset data
 import { tea, coffee } from '../utils/data';
 import { DrinkChoice } from './components/DrinkChoice'; 
+import { useState } from 'react';
+
 
 export const App = () => {
   const greeting = 'Welcome to our cafe!';
@@ -15,7 +17,9 @@ export const App = () => {
 //While writing the object names, auto import the objects, or manually import them.
 
 //Create a new const userDrink and assign it the tea or coffee object.
-const userDrink = tea;
+
+const [userDrink, setUserDrink] = useState(null);
+// const userDrink = tea;
   return (
     <div className="App">
       {userDrink 
