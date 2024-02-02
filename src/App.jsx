@@ -20,6 +20,11 @@ export const App = () => {
 
   const [userDrink, setUserDrink] = useState(null);
   // const userDrink = tea;
+
+  const handleDrinkSelection = (drink) => {
+    setUserDrink(drink);
+  };
+
   return (
     <div className="App">
       {userDrink ? (
@@ -29,8 +34,8 @@ export const App = () => {
         // if not render the following:
         <>
           <h1>{greeting}</h1>
-          <DrinkButtons drinkOne={tea.name} drinkTwo={coffee.name} />
-          <p>Please select a drink</p>
+          <DrinkButtons drinkOne={tea.name} drinkTwo={coffee.name} onDrinkSelect={handleDrinkSelection} />
+          {userDrink && <p>You have selected: {userDrink}</p>}
           <DrinkSearch />
         </>
       )}
