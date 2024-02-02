@@ -6,6 +6,7 @@ import { DrinkButtons } from './components/DrinkButtons'; //this is different Dr
 import { tea, coffee } from '../utils/data';
 import { DrinkChoice } from './components/DrinkChoice'; 
 import { useState } from 'react';
+import { DrinkSearch } from './components/DrinkSearch';
 
 
 export const App = () => {
@@ -32,6 +33,7 @@ const [userDrink, setUserDrink] = useState(null);
               <h1>{greeting}</h1>
               <DrinkButtons drinkOne={tea.name} drinkTwo={coffee.name} />
               <p>Please select a drink</p>
+              <DrinkSearch />
             </>
           )
       }
