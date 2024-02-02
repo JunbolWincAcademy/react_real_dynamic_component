@@ -15,7 +15,7 @@ export const App = () => {
 //While writing the object names, auto import the objects, or manually import them.
 
 //Create a new const userDrink and assign it the tea or coffee object.
-const userDrink = null;
+const userDrink = tea;
   return (
     <div className="App">
       {userDrink 
@@ -23,7 +23,7 @@ const userDrink = null;
             // Only render DrinkChoice if a drink is selected
               <DrinkChoice drink={userDrink} />
           )
-        : (
+        : (// if not render the following:
             <>
               <h1>{greeting}</h1>
               <DrinkButtons drinkOne={tea.name} drinkTwo={coffee.name} />
