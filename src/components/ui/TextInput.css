@@ -1,0 +1,12 @@
+.text-input {
+    width: 12rem;
+    margin: 1rem;
+    border-radius: 7px;
+    border-color: rgb(3, 141, 141);
+    border-width: .15rem;
+    padding: .5rem;
+    background-color: #e5e3e3;
+    color: rgb(3, 105, 30);
+    font-size: 1.2rem;
+    font-weight: normal;
+  }

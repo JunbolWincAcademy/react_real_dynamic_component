@@ -1,3 +1,4 @@
+import './TextInput.css'
 import { useState } from 'react';
 
 export const TextInput = () => {
@@ -9,9 +10,8 @@ export const TextInput = () => {
     };
     
     return (
-        <input
-            placeholder="Search for a drink" // Static string, so no curly braces needed
-            value={searchField} // Control the input with React state that is why is called controlled component
+        <input className='text-input'
+            
             // its makes a cycle so it renders continuously the state of the component
             onChange={handleInputChange} // Pass the function reference without calling it,
             // that is why it doesn't have the ( )
