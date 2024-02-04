@@ -12,6 +12,7 @@ export const TextInput = ({ onSearchSubmit }) => { // Make sure to receive onSea
     const handleKeyPress = (event) => {
         if (event.key === 'Enter') {
             onSearchSubmit(searchField); // Call the passed in onSearchSubmit function with the current search term
+            //by calling onSearchSubmit you are actually calling handleSearchSubmit = (searchQuery) in App.jsx and its parameter searchQuery is now searchField = tea
         }
     };
 

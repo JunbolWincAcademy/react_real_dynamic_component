@@ -29,8 +29,10 @@ export const App = () => {
 
   //-----handleSearchSubmit function
 
-  const handleSearchSubmit = (searchQuery) => {
-    if (searchQuery.toLowerCase() === 'tea') {
+  const handleSearchSubmit = (searchQuery) => { // the parameter is expected to be the search term entered by the user in the search input field.
+    // Since we are calling onSearchSubmit(searchField) in TextInput is like calling handleSearchSubmit from there and tell him here you go you
+    //  can use tea as parameter
+    // if (searchQuery.toLowerCase() === 'tea') {
       setUserDrink(tea);
     } else if (searchQuery.toLowerCase() === 'coffee') {
       setUserDrink(coffee);
@@ -52,7 +54,8 @@ export const App = () => {
           <DrinkButtons drinkOne={tea} drinkTwo={coffee} onDrinkSelect={handleDrinkSelection} />
           {/* <DrinkButtons drinkOne={tea.name} drinkTwo={coffee.name} onDrinkSelect={handleDrinkSelection} /> */}
           {userDrink && <p>You have selected: {userDrink}</p>}
-          <DrinkSearch onSearchSubmit={handleSearchSubmit} />
+          <DrinkSearch onSearchSubmit={handleSearchSubmit} /> {/* // here we are passing the function handleSearchSubmit to onSearchSubmit and 
+          pass it down to DrinkSearch as a prop*/}
         </>
       )}
     </div>
