@@ -6,8 +6,10 @@ export const DrinkButtons = ({ drinkOne, drinkTwo, onDrinkSelect }) => {
     <>
       <h2>Would you like tea or coffee?</h2>
       <div className="button-group">
-        <button onClick={() => onDrinkSelect(drinkOne)}>{drinkOne}</button>
-        <button onClick={() => onDrinkSelect(drinkTwo)}>{drinkTwo}</button>
+      <Button text={drinkOne.name} onClick={() => onDrinkSelect(drinkOne)} />
+      <Button text={drinkTwo.name} onClick={() => onDrinkSelect(drinkTwo)} /> 
+      {/* <Button text={drinkOne} onClick={() => onDrinkSelect(drinkOne)} />
+      <Button text={drinkTwo} onClick={() => onDrinkSelect(drinkTwo)} />  */}
       </div>
     </>
   );

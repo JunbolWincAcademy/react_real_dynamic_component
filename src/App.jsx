@@ -16,13 +16,28 @@ export const App = () => {
 
   //While writing the object names, auto import the objects, or manually import them.
 
-  //Create a new const userDrink and assign it the tea or coffee object.
+  //Create a new  userDrink state
 
   const [userDrink, setUserDrink] = useState(null);
-  // const userDrink = tea;
+
+  //-----handleDrinkSelection function
 
   const handleDrinkSelection = (drink) => {
+    console.log('Selected drink:', drink); // Add this line to debug
     setUserDrink(drink);
+  };
+
+  //-----handleSearchSubmit function
+
+  const handleSearchSubmit = (searchQuery) => {
+    if (searchQuery.toLowerCase() === 'tea') {
+      setUserDrink(tea);
+    } else if (searchQuery.toLowerCase() === 'coffee') {
+      setUserDrink(coffee);
+    } else {
+      // Handle invalid input
+      alert('Sorry, we only have tea and coffee.');
+    }
   };
 
   return (
@@ -34,9 +49,10 @@ export const App = () => {
         // if not render the following:
         <>
           <h1>{greeting}</h1>
-          <DrinkButtons drinkOne={tea.name} drinkTwo={coffee.name} onDrinkSelect={handleDrinkSelection} />
+          <DrinkButtons drinkOne={tea} drinkTwo={coffee} onDrinkSelect={handleDrinkSelection} />
+          {/* <DrinkButtons drinkOne={tea.name} drinkTwo={coffee.name} onDrinkSelect={handleDrinkSelection} /> */}
           {userDrink && <p>You have selected: {userDrink}</p>}
-          <DrinkSearch />
+          <DrinkSearch onSearchSubmit={handleSearchSubmit} />
         </>
       )}
     </div>

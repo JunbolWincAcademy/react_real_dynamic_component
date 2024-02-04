@@ -1,23 +1,28 @@
-import './TextInput.css'
+
+import './TextInput.css'; // Correctly include the CSS file for styles
 import { useState } from 'react';
 
-export const TextInput = () => {
-    const [searchField, setSearchTerm] = useState(''); // Initialize with an empty string
-    const handleInputChange = (event) => {//by default all eventhandlers or event objects will pass to the function'parameter the value of its user
-        // in this case <input>'s value which is whatever the user types and save it as the word "event" which is just a placeholder
-        // the same word will be use next to get its value:event.target.value
+export const TextInput = ({ onSearchSubmit }) => { // Make sure to receive onSearchSubmit as a prop
+    const [searchField, setSearchTerm] = useState('');
+
+    const handleInputChange = (event) => {
         setSearchTerm(event.target.value);
     };
-    
+
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            onSearchSubmit(searchField); // Call the passed in onSearchSubmit function with the current search term
+        }
+    };
+
     return (
-        <input className='text-input'
-            
-            // its makes a cycle so it renders continuously the state of the component
-            onChange={handleInputChange} // Pass the function reference without calling it,
-            // that is why it doesn't have the ( )
+        <input
+            className='text-input'
+            placeholder="Search for a drink" // Added placeholder for clarity
+            value={searchField}
+            onChange={handleInputChange}
+            onKeyPress={handleKeyPress} // Add this to handle enter key press
         />
     );
 };
-
-
 
