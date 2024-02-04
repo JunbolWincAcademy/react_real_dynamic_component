@@ -32,7 +32,7 @@ export const App = () => {
   const handleSearchSubmit = (searchQuery) => { // the parameter is expected to be the search term entered by the user in the search input field.
     // Since we are calling onSearchSubmit(searchField) in TextInput is like calling handleSearchSubmit from there and tell him here you go you
     //  can use tea as parameter
-    // if (searchQuery.toLowerCase() === 'tea') {
+     if (searchQuery.toLowerCase() === 'tea') {
       setUserDrink(tea);
     } else if (searchQuery.toLowerCase() === 'coffee') {
       setUserDrink(coffee);

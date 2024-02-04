@@ -1,18 +1,55 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TextInput } from "./ui/TextInput";
-export const DrinkSearch = ({ onSearchSubmit }) => {// you can translate this as DrinkSearch = ({ handleSearchSubmit }) so this parameter was defined in App.
+
+export const DrinkSearch = ({ onSearchSubmit }) => { // THIS WAS MISSING: Ensure onSearchSubmit is received as a prop from App
+    const [errorMessage, setErrorMessage] = useState('');
+
+    // -------This function is triggered when a search is submitted from the TextInput component onSearchSubmit={handleSearch}(if (event.key === 'Enter')
+    const handleSearch = (searchTerm) => {// The searchTerm parameter is the value typed by the user and passed up from TextInput.
+        // Since we have this on DrinkSearch onSearchSubmit(searchField);  on TextInput, we are basically calling HandleSearch with the argument tea as a searchTerm 
+        if (isValidSearchTerm(searchTerm)) {
+            setErrorMessage(''); // Clear any previous error message
+            onSearchSubmit(searchTerm); // THIS WAS MISSING: Call the function passed from App to update the state there
+            // Why needed: This connects the user's valid search term input with the App component's logic to display the corresponding drink.
+        } else {
+            setErrorMessage('Invalid input. Please try again.');
+        }
+    };
+
+    const isValidSearchTerm = (searchTerm) => {
+        // Implement your validation logic here
+        // For demonstration, let's just accept "tea" or "coffee"
+        return searchTerm.toLowerCase() === 'tea' || searchTerm.toLowerCase() === 'coffee';
+    };
+
     return (
         <>
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
             <label>Search for drinks:</label>
-             <TextInput onSearchSubmit={onSearchSubmit} /> {/*I don't understand why onSearchSubmit is receiving it self */}
-             {/* the first onSearchSubmit the one your are going to use as a prop in TextInput , is like your are defining it here*/}
-             {/* the second onSearchSubmit the one on the prop of DrinkSearch */}
-
+           <TextInput onSearchSubmit={handleSearch} />    {/*THIS WAS MISSING: Previously, you might have directly used onSearchSubmit, which does not exist in this scope. */}
+            {/* // Why needed: You need to pass the local handleSearch function to TextInput, which in turn, when the user presses Enter, will invoke this function with the current search term. */}
         </>
-    );      
+    );
 };
 
-//------EXPLANATION OF THE MEFCHANICS OF THE DATA FLOW
+
+
+
+
+// import { TextInput } from "./ui/TextInput";
+// export const DrinkSearch = ({ onSearchSubmit }) => {// you can translate this as DrinkSearch = ({ handleSearchSubmit }) so this parameter was defined in App.
+//     return (
+//         <>
+//             <label>Search for drinks:</label>
+//              <TextInput onSearchSubmit={onSearchSubmit} /> {/*I don't understand why onSearchSubmit is receiving it self */}
+//              {/* the first onSearchSubmit the one your are going to use as a prop in TextInput , is like your are defining it here*/}
+//              {/* the second onSearchSubmit the one on the prop of DrinkSearch */}
+
+//         </>
+//     );      
+// };
+ 
+//------EXPLANATION OF THE MECHANICS OF THE DATA FLOW
 
 /* Having trouble to understand this statement:    <TextInput onSearchSubmit={onSearchSubmit} /> was important to understand the dataflow of React
 In React there a bunch of rules that are bit different than vanilla Javascript, but there also common conventions. You need to know and understand them

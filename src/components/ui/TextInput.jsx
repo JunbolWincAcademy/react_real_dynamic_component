@@ -2,7 +2,11 @@
 import './TextInput.css'; // Correctly include the CSS file for styles
 import { useState } from 'react';
 
-export const TextInput = ({ onSearchSubmit }) => { // Make sure to receive onSearchSubmit as a prop
+
+// Receive onSearchSubmit as a prop from the parent component (DrinkSearch).
+// onSearchSubmit corresponds to the handleSearch function defined in DrinkSearch.jsx. and passed down through DrinkSearch.jsx.
+
+export const TextInput = ({ onSearchSubmit }) => { // this is actually handleSearch in DrinkSearch Make sure to receive onSearchSubmit as a prop
     const [searchField, setSearchTerm] = useState('');
 
     const handleInputChange = (event) => {
